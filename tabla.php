@@ -42,9 +42,9 @@
     <?php
         include_once "connection/Connection.php";
         $sql = "SELECT * FROM articulos
-        LEFT JOIN familias ON familias.id = articulos.familia_id 
-        LEFT JOIN clases ON clases.id = familias.clase_id 
-        LEFT JOIN departamentos ON departamentos.id = clases.depto_id $where ORDER BY id_articulo DESC";
+        INNER JOIN familias ON familias.id = articulos.familia_id 
+        INNER JOIN clases ON clases.id = familias.clase_id 
+        INNER JOIN departamentos ON departamentos.id = clases.depto_id $where ORDER BY id_articulo DESC";
         
         $resultado = mysqli_query($db, $sql);
 
