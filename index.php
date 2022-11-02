@@ -25,10 +25,11 @@
         if(isset($_POST['buscar'])){
             $sku = $_POST['sku'];
             require_once "connection/connection.php";
-            $sql = "SELECT * FROM articulos WHERE sku = $sku";
+            $sql = "SELECT sku FROM articulos WHERE sku = $sku";
             $resultado = mysqli_query($db, $sql);
             if($resultado->num_rows > 0){
-                header("Location: tabla.php");
+                $row = mysqli_fetch_assoc($resultado);
+                header("Location: tabla.php?id=".$row['id_articulo']."");
             }else{
                 echo "<script language='JavaScript'>
                 alert ('No existe el SKU recibido, Registra un producto');
